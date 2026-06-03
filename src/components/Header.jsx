@@ -1,12 +1,14 @@
 import React from "react";
-import { Sparkles, TrendingUp  } from "lucide-react";
+import { Sparkles, TrendingUp } from "lucide-react";
 
 const Header = () => {
-  return (
+  let progress = 50;
+  let activeTodos = 4;
+    return (
     <>
       <div className="backdrop-blur-2xl bg-white/5 rounded-3xl border-white/10 p-6 mb-4 shadow-2xl">
         <div className="flex items-center justify-between mb-4">
-          
+
           {/* Left side part */}
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -24,12 +26,29 @@ const Header = () => {
               </p>
             </div>
           </div>
-          
+
           {/* Right side part */}
           <div className="flex items-center gap-2 px-2 py-2 bg-linear-to-br from-violet-500/20 to-fuchsia-500/20 rounded-full border border-violet-400/30">
             <TrendingUp size={16} className="text-emerald-400" />
-            <span className="text-white font-bold text-sm">{1} Active</span>
+            <span className="text-white font-bold text-sm">{activeTodos} Active</span>
           </div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="relative"> 
+          <div className="flex justify-between mb-2">
+            <span className="text-white/70 text-xs font-semibold">Progress</span>
+            <span className="text-white font-bold text-sm">{Math.round(progress)}%</span>
+          </div>
+          <div className="relative w-full h-2 bg-white/10 rounded-full overflow-hidden">
+            <div className="absolute inset-0 bg-linear-to-br from-emerald-400 via-teal-400 to-cyan-400 rounded-full transition-all duration-700 ease-out shadow-lg
+            " style={{width: `${progress}%`}}>
+            </div>
+            <div className="absolute inset-0 bg-linear-to-br from-transparent via-white/30 to-transparent animate-shimmer">
+
+            </div>
+          </div>
+
         </div>
       </div>
     </>
