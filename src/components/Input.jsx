@@ -1,10 +1,10 @@
 import React from "react";
 import { Plus } from "lucide-react";
 
-const Input = () => {
-  let value;
-  let onChange;
-  let onAdd;
+const Input = ({value, onChange, onAdd}) => {
+  // let value;
+  // let onChange;
+  // let onAdd;
   let onKeyPress;
 
   return (
