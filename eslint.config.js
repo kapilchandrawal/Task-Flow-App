@@ -19,7 +19,9 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     rules: {
+      "no-unassigned-vars": "warn",
       "no-unused-vars": "warn", //on, off
+      "no-undef": "warn",
     },
   },
   eslintConfigPrettier,
