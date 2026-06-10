@@ -2,7 +2,7 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import { Sparkles } from "lucide-react";
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos, onDelete}) => {
   // let todos = [];
   let editingId;
   let editText;
@@ -10,7 +10,7 @@ const TodoList = ({todos}) => {
   let onStartEdit;
   let onSaveEdit;
   let onCancleEdit;
-  let onDelete;
+  // let onDelete;
   let onEditTextChange;
   let onEditKeyPress;
 

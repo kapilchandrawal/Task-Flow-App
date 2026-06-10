@@ -20,7 +20,6 @@ const App = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   console.log("todo", todos);
-  
 
   // Get from localStorage
 
@@ -28,7 +27,7 @@ const App = () => {
 
   // Show notification
   const showNotification = (message, type = "success") => {
-    setNotification({message, type});
+    setNotification({ message, type });
     setTimeout(() => {
       setNotification(null);
     }, 3000);
@@ -51,16 +50,21 @@ const App = () => {
     showNotification("✨ Task added successfully!", "success");
   };
 
-  // Key Press Down (add) 
+  // Key Press Down (add)
   const handleKeyPress = (e) => {
-    if(e.key == "Enter"){
+    if (e.key == "Enter") {
       handleAddTodo();
     }
-  }
+  };
 
   // Update todo
 
   // Delete todo
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todos) => todos.id !== id));
+    playSound("delete")
+    showNotification("🗑️ Task deleted successfully!", "info")
+  };
 
   return (
     <>
@@ -80,7 +84,7 @@ const App = () => {
             onAdd={handleAddTodo}
             onKeyPress={handleKeyPress}
           />
-          <TodoList todos={todos} />
+          <TodoList todos={todos} onDelete={deleteTodo} />
           <ClearButton />
         </div>
         <style>
