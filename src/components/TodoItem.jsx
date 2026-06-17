@@ -15,6 +15,8 @@ const TodoItem = ({
   onEditKeyPress,
 }) => {
   const isEditing = editingId == todo.id;
+  console.log("todo id", todo.id);
+  
   return (
     <div
       className={`group backdrop-blur-2xl bg-white/5 hover:bg-white/10 rounded-xl p-3 flex items-center gap-3 
@@ -60,7 +62,7 @@ const TodoItem = ({
         {isEditing ? (
           <>
             <button
-              onClick={() => onSaveEdit(todo, id)}
+              onClick={() => onSaveEdit(todo.id)}
               className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500 hover:text-white 
             transition-all duration-300 flex items-center justify-center transform hover:scale-110 active:scale-95 border border-emerald-500/30"
             >

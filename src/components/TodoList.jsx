@@ -2,17 +2,17 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import { Sparkles } from "lucide-react";
 
-const TodoList = ({todos, onDelete}) => {
+const TodoList = ({todos, editText, editingId, onStartEdit, onEditTextChange, onEditKeyPress, onSaveEdit, onCancelEdit, onDelete}) => {
   // let todos = [];
-  let editingId;
-  let editText;
+  // let editingId;
+  // let editText;
   let onToggle;
-  let onStartEdit;
-  let onSaveEdit;
-  let onCancleEdit;
+  // let onStartEdit;
+  // let onSaveEdit;
+  // let onCancleEdit;
   // let onDelete;
-  let onEditTextChange;
-  let onEditKeyPress;
+  // let onEditTextChange;
+  // let onEditKeyPress;
 
   if(todos.length === 0){
     return(
@@ -39,7 +39,7 @@ const TodoList = ({todos, onDelete}) => {
             onToggle={onToggle}
             onStartEdit={onStartEdit}
             onSaveEdit={onSaveEdit}
-            onCancleEdit={onCancleEdit}
+            onCancleEdit={onCancelEdit}
             onDelete={onDelete}
             onEditTextChange={onEditTextChange}
             onEditKeyPress={onEditKeyPress}
