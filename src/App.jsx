@@ -50,6 +50,21 @@ const App = () => {
     showNotification("✨ Task added successfully!", "success");
   };
 
+  //On Toggle
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+    const todo = todos.find((t) => t.id === id);
+
+    if (!todo.completed) {
+      playSound("completed");
+      showNotification("🎉 Great job! Task completed");
+    }
+  };
+
   // Key Press Down (add)
   const handleKeyPress = (e) => {
     if (e.key == "Enter") {
@@ -129,6 +144,7 @@ const App = () => {
             editText={editText}
             onEditTextChange={(e) => setEditText(e.target.value)}
             onEditKeyPress={handleEditKeyPress}
+            onToggle={toggleTodo}
           />
           <ClearButton />
         </div>
