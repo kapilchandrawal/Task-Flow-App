@@ -52,7 +52,7 @@ const TodoItem = ({
         <>
           <span
             className={`flex-1 font-medium text-sm transition-all duration-300 
-            ${todo.completed ? "line-through text-white/40 " : "text-white"} `}
+            ${todo.completed ? "line-through text-white/70 " : "text-white"} `}
           >
             {todo.text}
           </span>

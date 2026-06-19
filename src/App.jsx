@@ -116,6 +116,13 @@ const App = () => {
     showNotification("🗑️ Task deleted successfully!", "info");
   };
 
+  // Clear all completed task
+  const clearCompleted = () => {
+    setTodos(todos.filter((t) => !t.completed));
+    playSound("deleted");
+    showNotification("🗑️ Task deleted successfully!", "info");
+  };
+
   return (
     <>
       <div className="min-h-screen bg-linear-to-br from-indigo-950 via-purple-950 to-pink-950 p-3 sm:p-6 relative overflow-hidden">
@@ -146,7 +153,10 @@ const App = () => {
             onEditKeyPress={handleEditKeyPress}
             onToggle={toggleTodo}
           />
-          <ClearButton />
+          <ClearButton
+            // completedTodos={completedTodos}
+            onClick={clearCompleted}
+          />
         </div>
         <style>
           {`
