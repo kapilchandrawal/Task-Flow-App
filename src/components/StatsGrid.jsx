@@ -1,10 +1,10 @@
 import React from "react";
 import { Zap, CheckCircle } from "lucide-react";
 
-const StatsGrid = () => {
-  let totalTodos = 4;
-  let activeTodos = 2;
-  let completedTodos = 2;
+const StatsGrid = ({totalTodos, completedTodos, activeTodos}) => {
+  // let totalTodos = 4;
+  // let activeTodos = 2;
+  // let completedTodos = 2;
 
   return (
     <>

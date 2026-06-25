@@ -1,9 +1,9 @@
 import React from "react";
 import { Sparkles, TrendingUp } from "lucide-react";
 
-const Header = () => {
-  let progress = 50;
-  let activeTodos = 4;
+const Header = ({activeTodos, progress, totalTodos}) => {
+  // let progress = 50;
+  // let activeTodos = 4;
     return (
     <>
       <div className="backdrop-blur-2xl bg-white/5 rounded-3xl border-white/10 p-6 mb-4 shadow-2xl">

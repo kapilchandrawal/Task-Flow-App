@@ -123,6 +123,11 @@ const App = () => {
     showNotification("🗑️ Task deleted successfully!", "info");
   };
 
+  // Variables to add data dynamically
+  const activeTodos = todos.filter((t) => !t.completed).length;
+  const completedTodos = todos.filter((t) => t.completed).length;
+  const progress = todos.length > 0 ? (completedTodos / todos.length) * 100 : 0;
+
   return (
     <>
       <div className="min-h-screen bg-linear-to-br from-indigo-950 via-purple-950 to-pink-950 p-3 sm:p-6 relative overflow-hidden">
@@ -133,8 +138,16 @@ const App = () => {
         />
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <Header />
-          <StatsGrid />
+          <Header
+            activeTodos={activeTodos}
+            progress={progress}
+            totalTodos={todos.length}
+          />
+          <StatsGrid
+            activeTodos={activeTodos}
+            completedTodos={completedTodos}
+            totalTodos={todos.length}
+          />
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -154,7 +167,7 @@ const App = () => {
             onToggle={toggleTodo}
           />
           <ClearButton
-            // completedTodos={completedTodos}
+            completedTodos={completedTodos}
             onClick={clearCompleted}
           />
         </div>
