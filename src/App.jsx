@@ -52,17 +52,18 @@ const App = () => {
 
   //On Toggle
   const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    );
     const todo = todos.find((t) => t.id === id);
 
-    if (!todo.completed) {
+    if (todo && !todo.completed) {
       playSound("completed");
       showNotification("🎉 Great job! Task completed");
     }
+    setTodos(
+      todos.map((t) =>
+        t.id === id ? { ...t, completed: !t.completed } : t,
+      ),
+    );
+    
   };
 
   // Key Press Down (add)
