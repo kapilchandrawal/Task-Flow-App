@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Animate from "./components/Animate";
 import Notification from "./components/Notification";
 import Header from "./components/Header";
@@ -22,8 +22,30 @@ const App = () => {
   console.log("todo", todos);
 
   // Get from localStorage
+  useEffect(() => {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (data) {
+        setTimeout(() => {
+          setTodos(JSON.parse(data));
+        }, 0);
+      }
+    } catch (error) {
+      console.log("Failed to load local storage:", error);
+    } finally {
+      setHasLoaded(true);
+    }
+  }, []);
 
   // Save to localStorage
+  useEffect(() => {
+    if (!hasLoaded) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+    } catch (error) {
+      console.log("Failed to save to local storage:", error);
+    }
+  }, [todos, hasLoaded]);
 
   // Show notification
   const showNotification = (message, type = "success") => {
@@ -59,11 +81,8 @@ const App = () => {
       showNotification("🎉 Great job! Task completed");
     }
     setTodos(
-      todos.map((t) =>
-        t.id === id ? { ...t, completed: !t.completed } : t,
-      ),
+      todos.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
     );
-    
   };
 
   // Key Press Down (add)
